@@ -1,0 +1,60 @@
+
+#message-form {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  #logout{
+    position: fixed;
+    padding: 0;
+    margin: 0;
+  }
+
+  #message-container {
+    width: 80%;
+    max-width: 1200px;
+    padding-bottom: 100px;
+  }
+
+  #message-container div {
+    background-color: #CCC;
+    padding: 5px;
+  }
+  #your-name{
+    height: 35px;
+    background:beige ;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  #message-container div:nth-child(2n) {
+    background-color: #FFF;
+  }
+
+  #send-container {
+    position: fixed;
+    padding-bottom: 30px;
+    bottom: 0;
+    background-color: white;
+    max-width: 1200px;
+    width: 80%;
+    display: flex;
+  }
+
+  #message-input {
+    flex-grow: 1;
+    height: 35px;
+    border-radius: 30px;  
+    margin: 5px;
+    padding: 0 25px;
+    display: flex;
+    width: 100%;
+    outline: none;
+  }

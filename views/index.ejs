@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Chat App</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <!-- Показує всі кімнати які є та дозволяж прижднатися до них -->
+  <div id="room-container">
+    
+     <% Object.keys(rooms).forEach(room => { %>
+      <div  id="room">
+          <div style="margin-left: 42%;"><%= room %>:</div>
+          <a style="margin-right:50%" href="/<%= room %>"><p>Приєднатися</p></a>
+      </div>
+    <% }) %>
+    
+  </div>
+<!-- Створює кімнату та переносить зразу в неї  -->
+  <form style="padding-top: 20px;" action="/room" method="POST">
+    <input name="room" type="text" required autocomplete="off">
+    <button type="submit">Створити кімнату</button>
+  </form>
+</body>
+</html>

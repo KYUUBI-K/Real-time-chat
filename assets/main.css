@@ -1,0 +1,12 @@
+#room{
+    padding-bottom: 10px;
+    border: 1px solid blue;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+  }
+  a{
+    text-decoration: none;
+  }
