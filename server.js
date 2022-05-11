@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 
 app.post('/room', (req, res) => {
   if (rooms[req.body.room] != null) {
-    // якщо кімната така існує то переміщує на головну сторінку знову 
     return res.redirect('/')
   }
   rooms[req.body.room] = { users: {} }
@@ -39,21 +38,16 @@ server.listen(3000, ()=>{
 })
 
 io.on('connection', socket => {
-  //отримати про те що підключився новий user і в якій кімнаті 
   socket.on('new-user', (room, name) => {
-    //пудключитись у вибрану кімнату
+
     socket.join(room)
     rooms[room].users[socket.id] = name
     console.log(rooms)
-    //відправити всім в конкретній кімнаті .to(room). крім user що він підключився
     socket.to(room).broadcast.emit('user-connected', name) 
   })
-  //отримати повідомлення від клієнта який знаходиться в такій то кімнаті
   socket.on('send-chat-message', (room, message) => {
-   //відправити повідомлення усім хто є в цій кімнаті .to(room). окрім людини яка відправила це повідомлення
     socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
   })
-  //відправити повідомлення усім хто є в цій кімнаті .to(room). окрім людини яка відправила це повідомлення про те що вона покинула кімнату
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
       socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])

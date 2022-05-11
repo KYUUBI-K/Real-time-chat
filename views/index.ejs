@@ -10,7 +10,6 @@
   <script defer src="./script.js"></script>
 </head>
 <body>
-  <!-- Показує всі кімнати які є та дозволяж прижднатися до них -->
   <div id="room-container">
     
      <% Object.keys(rooms).forEach(room => { %>
@@ -21,7 +20,6 @@
     <% }) %>
     
   </div>
-<!-- Створює кімнату та переносить зразу в неї  -->
   <form style="padding-top: 20px;" action="/room" method="POST">
     <input name="room" type="text" required autocomplete="off">
     <button type="submit">Створити кімнату</button>
